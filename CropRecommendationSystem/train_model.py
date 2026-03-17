@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 import joblib
 import os
-import seaborn as sns
-import matplotlib.pyplot as plt
+# import seaborn as sns
+# import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
@@ -34,12 +34,12 @@ def main():
     y = df['label']
 
     # --- EDA: Correlation Heatmap ---
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(X.corr(), annot=True, cmap='coolwarm', fmt=".2f")
-    plt.title('Feature Correlation Heatmap')
-    plt.savefig(os.path.join(notebooks_dir, 'correlation_heatmap.png'))
-    plt.close()
-    print("Saved correlation heatmap to notebooks/correlation_heatmap.png")
+    # plt.figure(figsize=(10, 8))
+    # sns.heatmap(X.corr(), annot=True, cmap='coolwarm', fmt=".2f")
+    # plt.title('Feature Correlation Heatmap')
+    # plt.savefig(os.path.join(notebooks_dir, 'correlation_heatmap.png'))
+    # plt.close()
+    # print("Saved correlation heatmap to notebooks/correlation_heatmap.png")
 
     # Encode labels
     encoder = LabelEncoder()
@@ -77,15 +77,15 @@ def main():
     if best_name == "Random Forest":
         importances = best_model.feature_importances_
         indices = np.argsort(importances)[::-1]
-        plt.figure(figsize=(10, 6))
-        plt.title("Feature Importances")
-        plt.bar(range(X.shape[1]), importances[indices], align="center")
-        plt.xticks(range(X.shape[1]), X.columns[indices], rotation=45)
-        plt.xlim([-1, X.shape[1]])
-        plt.tight_layout()
-        plt.savefig(os.path.join(notebooks_dir, 'feature_importance.png'))
-        plt.close()
-        print("Saved feature importance chart to notebooks/feature_importance.png")
+        # plt.figure(figsize=(10, 6))
+        # plt.title("Feature Importances")
+        # plt.bar(range(X.shape[1]), importances[indices], align="center")
+        # plt.xticks(range(X.shape[1]), X.columns[indices], rotation=45)
+        # plt.xlim([-1, X.shape[1]])
+        # plt.tight_layout()
+        # plt.savefig(os.path.join(notebooks_dir, 'feature_importance.png'))
+        # plt.close()
+        # print("Saved feature importance chart to notebooks/feature_importance.png")
 
     # Save artifacts
     print("\nSaving artifacts...")
