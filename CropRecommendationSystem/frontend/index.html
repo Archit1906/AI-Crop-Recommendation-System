@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Crop Recommender</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="background-mesh"></div>
+    
+    <div class="container">
+        <header class="glass-header">
+            <h1>🌱 AI Crop Recommender</h1>
+            <p>Data-driven decisions for modern farming.</p>
+        </header>
+
+        <main>
+            <div class="split-layout">
+                <!-- Input Form -->
+                <section class="glass-panel form-section" id="formSection">
+                    <h2>Enter Soil & Environment Data</h2>
+                    <form id="predictionForm">
+                        <div class="input-grid">
+                            <div class="input-group">
+                                <label for="N">Nitrogen (N) *</label>
+                                <input type="number" step="0.01" id="N" name="N" required placeholder="e.g. 90">
+                            </div>
+                            <div class="input-group">
+                                <label for="P">Phosphorus (P) *</label>
+                                <input type="number" step="0.01" id="P" name="P" required placeholder="e.g. 42">
+                            </div>
+                            <div class="input-group">
+                                <label for="K">Potassium (K) *</label>
+                                <input type="number" step="0.01" id="K" name="K" required placeholder="e.g. 43">
+                            </div>
+                            <div class="input-group">
+                                <label for="ph">Soil pH *</label>
+                                <input type="number" step="0.01" id="ph" name="ph" required placeholder="e.g. 6.5">
+                            </div>
+                            <div class="input-group full-width">
+                                <label for="rainfall">Rainfall (mm) *</label>
+                                <input type="number" step="0.01" id="rainfall" name="rainfall" required placeholder="e.g. 200">
+                            </div>
+                        </div>
+
+                        <div class="weather-section">
+                            <h3><i class="fas fa-cloud-sun"></i> Weather Data</h3>
+                            <p class="subtitle">Provide a city for auto-fetch, OR enter manually.</p>
+                            
+                            <div class="input-group full-width">
+                                <label for="city">City (Optional - Auto Weather)</label>
+                                <input type="text" id="city" name="city" placeholder="e.g. London, Delhi">
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="temperature">Temperature (°C)</label>
+                                    <input type="number" step="0.01" id="temperature" name="temperature" placeholder="e.g. 25.5">
+                                </div>
+                                <div class="input-group">
+                                    <label for="humidity">Humidity (%)</label>
+                                    <input type="number" step="0.01" id="humidity" name="humidity" placeholder="e.g. 70.0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="btn-primary">
+                            <span>Get Recommendation</span>
+                            <div class="spinner" id="spinner"></div>
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Recommendation Result -->
+                <section class="glass-panel result-section hidden" id="resultSection">
+                    <div class="result-header">
+                        <h2>Recommended Crop</h2>
+                        <button id="backBtn" class="btn-icon" title="Go Back">🔄</button>
+                    </div>
+                    
+                    <div class="crop-display">
+                        <div class="crop-icon" id="cropNameLetter">🌾</div>
+                        <h1 id="predictedCrop">Wheat</h1>
+                        <p class="confidence">Confidence: <span id="predictionConfidence">98%</span></p>
+                    </div>
+
+                    <div class="tips-container">
+                        <h3>🌿 Expert Farming Tips</h3>
+                        <div class="tip-card">
+                            <h4>💧 Irrigation</h4>
+                            <p id="tipIrrigation">Water regularly</p>
+                        </div>
+                        <div class="tip-card">
+                            <h4>🌍 Soil Requirements</h4>
+                            <p id="tipSoil">Well drained soil</p>
+                        </div>
+                        <div class="tip-card">
+                            <h4>☀️ Climate</h4>
+                            <p id="tipClimate">Sunny</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Error Alert -->
+                <div id="errorAlert" class="error-alert hidden">
+                    <p id="errorText">Something went wrong.</p>
+                    <button id="closeError" class="btn-close">×</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
