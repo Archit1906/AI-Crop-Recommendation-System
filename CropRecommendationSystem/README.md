@@ -14,13 +14,13 @@ An industry-level, end-to-end AI-powered Crop Recommendation System. It uses env
 ### 1. Setup Python Environment
 ```bash
 # Create virtual environment
-python -m venv venv
+python -m venv venv2
 
 # Activate it
 # On Windows
-venv\Scripts\activate
+.\venv2\Scripts\activate
 # On Mac/Linux
-source venv/bin/activate
+source venv2/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -43,7 +43,7 @@ OPENWEATHER_API_KEY=your_actual_api_key_here
 ### 4. Run the API Layer
 Start the FastAPI server on `localhost:8000`:
 ```bash
-uvicorn backend.main:app --reload
+.\venv2\Scripts\python.exe -m uvicorn backend.main:app --reload
 ```
 
 ### 5. Launch the Frontend
